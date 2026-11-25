@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "@fontsource/barlow/latin-400.css";
+@import "@fontsource/barlow/latin-500.css";
+@import "@fontsource/barlow/latin-600.css";
+@import "@fontsource/barlow/latin-700.css";
+@import "@fontsource/oswald/latin-500.css";
+@import "@fontsource/oswald/latin-600.css";
+
+@theme {
+  --color-bg: #0c0b0a;
+  --color-surface: #161513;
+  --color-surface-2: #211f1b;
+  --color-fg: #f4f0e8;
+  --color-muted: #b1aa9e;
+  --color-primary: #ff3b5c;
+  --color-border: #2e2b26;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@keyframes pulse-led {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.pulse-led {
+  animation: pulse-led 0.9s ease-in-out infinite;
+}
+
+.glow {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-primary) 45%, transparent),
+    0 8px 28px color-mix(in oklab, var(--color-primary) 30%, transparent);
+}
+
+.led-hot {
+  box-shadow: 0 0 12px color-mix(in oklab, var(--color-primary) 55%, transparent);
+}
